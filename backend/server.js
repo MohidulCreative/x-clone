@@ -6,6 +6,7 @@ import {v2 as cloudinary } from "cloudinary";
 import authroutes from "./routes/auth.routes.js";
 import userRoutes from "./routes/user.routes.js";
 import postRoutes from "./routes/post.routes.js";
+import notificationRoutes from "./routes/notification.routes.js";
 
 dotenv.config();
 const app = express();
@@ -25,6 +26,7 @@ cloudinary.config({
 app.use("/api/auth", authroutes);
 app.use("/api/user", userRoutes);
 app.use("/api/posts", postRoutes);
+app.use("/api/notifications", notificationRoutes); 
 
 // Error handling middleware (optional)
 app.use((err, req, res, next) => {
