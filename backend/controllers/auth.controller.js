@@ -4,12 +4,12 @@ import bcrypt from "bcrypt";
 
 export const signup = async (req, res) => {
     try {
-        const { username, fullname, email, password } = req.body;
+        const { username, fullName, email, password } = req.body;
         const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
         // Validate required fields
-        if (!username || !fullname || !email || !password) {
-            return res.status(400).json({ error: "All fields are required" });
+        if (!username || !fullName || !email || !password) {
+            return res.status(400).json({ error: "All fields are required!" });
         }
 
         // Validate email format
@@ -36,7 +36,7 @@ export const signup = async (req, res) => {
         // Create new user
         const newUser = new User({
             username,
-            fullname,
+            fullName,
             email,
             password: hashedPassword,
         });
@@ -51,7 +51,7 @@ export const signup = async (req, res) => {
         res.status(200).json({
             _id: newUser._id,
             username: newUser.username,
-            fullname: newUser.fullname,
+            fullName: newUser.fullName,
             email: newUser.email,
             profileImg: newUser.profileImg,
             coverImg: newUser.coverImg,
@@ -76,7 +76,7 @@ export const login = async (req, res) => {
         res.status(200).json({
             _id: user._id,
             username: user.username,
-            fullname: user.fullname,
+            fullName: user.fullName,
             email: user.email,
             profileImg: user.profileImg,
             coverImg: user.coverImg,
